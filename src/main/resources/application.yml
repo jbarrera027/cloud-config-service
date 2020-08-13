@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: cloud-config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/adborja/tech-ecommerce-config.git
+          clone-on-start: true
+      enabled: false
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASSWORD}
+    virtual-host: ${RABBITMQ_VHOST}
+  security:
+    user:
+      name: ${CFG_USERNAME}
+      password: ${CFG_PASSWORD}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: e-commerce cloud configuration service
+    version: 1.0.0
+    git-url: ${spring.application.cloud.config.server.git.uri}
+    rabbitmq: ${spring.application.rabbitmq.host}
