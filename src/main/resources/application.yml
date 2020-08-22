@@ -29,6 +29,17 @@ management:
       exposure:
         include: bus-refresh
 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: https://cloud-discover-service-jbarrer.herokuapp.com/
+
+ribbon:
+  eureka:
+    enabled: true
+
 info:
   app:
     name: ${spring.application.name}
