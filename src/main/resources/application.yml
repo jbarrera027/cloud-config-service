@@ -34,7 +34,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      default-zone: https://cloud-discover-service-jbarrer:8761/eureka/
+      default-zone: https://cloud-discover-service-jbarrer.herokuapp.com/
 
 ribbon:
   eureka:
